@@ -22,6 +22,8 @@ contract MyDevNFT is ERC721URIStorage {
     string[] firstWords = ["Great", "Fearsome", "Sexy", "Naked", "Unbeatable", "Unfuckwittable", "Troublesome", "Indomitable"];
     string[] secondWords = ["Spaghetti", "Cookie", "Spice", "Sugar", "Cinnamon", "Ginger", "Coke", "Chocolate"];
     string[] thirdWords = ["Mafia", "Army", "Militia", "Junta", "Squadron", "DeathSquad", "Gang", "Cult"];
+
+    event NewDevNFTMinted(address sender, uint256 tokenId);
     
     constructor() ERC721 ("SquareNFT", "SQUARE") {
         console.log("gm, this is my first NFT contract. WATMG, wgmi");
@@ -97,5 +99,6 @@ contract MyDevNFT is ERC721URIStorage {
         //different tokenIds identifier each time an NFT is minted.
         _tokenIds.increment();
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
+        emit NewDevNFTMinted(msg.sender, newItemId);
     }
 }
